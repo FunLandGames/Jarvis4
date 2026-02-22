@@ -10,27 +10,8 @@
 <body>
 <h1>Jarvis AI Assistant</h1>
 <input type="text" id="question" placeholder="Ask me something...">
-<button onclick="askJarvis()">Ask</button>
+<button id="askBtn">Ask</button>
 <p id="answer"></p>
-
-<script>
-async function askJarvis() {
-    const question = document.getElementById('question').value;
-    if(!question) return;
-
-    const res = await fetch('/ask', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({question})
-    });
-
-    const data = await res.json();
-    document.getElementById('answer').innerText = data.answer;
-
-    // Speak answer using ResponsiveVoice
-    responsiveVoice.speak(data.answer, "Hindi Male");
-}
-</script>
 
 <footer>
 <p>Made by Lakshya Pandey</p>
@@ -39,5 +20,7 @@ async function askJarvis() {
 <a href="https://youtube.com/@mr.gyani3?si=mGxJacs6mT9fgwNg">YouTube</a>
 </p>
 </footer>
+
+<script src="/static/main.js"></script>
 </body>
 </html>
